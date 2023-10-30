@@ -9,6 +9,6 @@ namespace App.Web.Framework.Models
     public class ReadingModel
     {
         public decimal Value { get; set; }
-        public string Timestamp { get; set; } = string.Empty;
+        public DateTime Timestamp { get; set; }
     }
 }

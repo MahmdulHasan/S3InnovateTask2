@@ -16,11 +16,12 @@ namespace App.Web.Framework.Factories
             var readings = await _readingService.GetReadingDataAsync(buildingId, objectId,
                                dataFieldId, startDate, endDate);
 
-            var groupedreadingData = readings.GroupBy(g => g.Timestamp.Hour)
+            var groupedreadingData = readings
+                                             .OrderBy(g => g.Timestamp)
                                              .Select(s => new ReadingModel
                                              {
-                                                 Timestamp = s.Key + ":00",
-                                                 Value = s.Average(s => s.Value)
+                                                 Timestamp = s.Timestamp,
+                                                 Value =  s.Value
                                              }).ToList();
 
             return groupedreadingData;

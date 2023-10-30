@@ -30,11 +30,11 @@ namespace App.Services.Readings
             if (dataFieldId != 0)
                 readingData = readingData.Where(w => w.BuildingId == dataFieldId);
 
-            if (startDate.HasValue)
-                readingData = readingData.Where(w => w.Timestamp >= startDate);
+            if (startDate.HasValue && startDate != DateTime.MinValue)
+                readingData = readingData.Where(w => w.Timestamp.Date >= startDate.Value.Date);
 
-            if (endDate.HasValue)
-                readingData = readingData.Where(w => w.Timestamp <= endDate);
+            if (endDate.HasValue && endDate != DateTime.MinValue)
+                readingData = readingData.Where(w => w.Timestamp.Date <= endDate.Value.Date);
 
             return readingData;
 

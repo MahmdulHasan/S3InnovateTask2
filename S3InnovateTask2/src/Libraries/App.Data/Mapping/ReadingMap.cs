@@ -18,7 +18,8 @@ namespace App.Data.Mapping
             builder.Property(p => p.Timestamp)
                .IsRequired();
 
-            builder.HasKey(r => new { r.BuildingId, r.ObjectId, r.DataFieldId });
+            builder.HasIndex(r => r.Timestamp)
+                   .IsUnique(false);
         }
     }
 }

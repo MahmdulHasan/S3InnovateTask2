@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App.Data.Entities
 {
-    public class Reading
+    public class Reading : BaseEntity
     {
         public int BuildingId { get; set; }
         public int ObjectId { get; set; }

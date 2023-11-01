@@ -18,7 +18,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet(Name = "GetTimeSeriesData")]
-        public async Task<List<ReadingModel>> Get(int buildingId, int objectId, int dataFieldId, DateTime startDate, DateTime endDate)
+        public async Task<List<ReadingModel>> Get(int buildingId, int objectId, int dataFieldId, DateTime?startDate, DateTime? endDate)
         {
             return await _readingModelFactory.GetTimeSeriesData(buildingId, objectId, dataFieldId,
                 startDate, endDate);

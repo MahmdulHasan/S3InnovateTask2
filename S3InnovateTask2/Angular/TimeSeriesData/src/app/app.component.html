@@ -1,0 +1,32 @@
+<div>
+  <h1>Time Series Data</h1>
+
+  <div>
+    <select [(ngModel)]="selectedBuilding">
+      <option [ngValue]="null">Select Building</option>
+      <option *ngFor="let building of buildings" [ngValue]="building">{{ building.name }}</option>
+    </select>
+
+    <select [(ngModel)]="selectedObject">
+      <option [ngValue]="null">Select Object</option>
+      <option *ngFor="let object of objects" [ngValue]="object">{{ object.name }}</option>
+    </select>
+
+    <select [(ngModel)]="selectedDataField">
+      <option [ngValue]="null">Select Data Field</option>
+      <option *ngFor="let dataField of dataFields" [ngValue]="dataField">{{ dataField.name }}</option>
+    </select>
+
+    <input type="date" [(ngModel)]="startDate" />
+    <input type="date" [(ngModel)]="endDate" />
+
+    <button (click)="fetchData()">Fetch Data</button>
+  </div>
+</div>
+
+<div>
+  <div style="display: block;">
+    <canvas id="canvas" baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="chartOptions"
+    [legend]="true" [type]="'line'"></canvas>
+  </div>
+</div>
